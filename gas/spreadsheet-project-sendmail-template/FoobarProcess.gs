@@ -1,7 +1,7 @@
-// Foobarˆ—‚ÌÀ‘•
+// Foobarå‡¦ç†ã®å®Ÿè£…
 
 function doFoobar(p) {
-  // ÀÛ‚Ìˆ—
+  // å®Ÿéš›ã®å‡¦ç†
   
   sendMail('FoobarMail', p);
 }

@@ -1,20 +1,20 @@
 /*
-SpreadSheet‚É‚ ‚ç‚©‚¶‚ßˆÈ‰º‚ÌƒV[ƒg‚ğì¬‚µ‚Ä‚¨‚­
+SpreadSheetã«ã‚ã‚‰ã‹ã˜ã‚ä»¥ä¸‹ã®ã‚·ãƒ¼ãƒˆã‚’ä½œæˆã—ã¦ãŠã
 	log
 	error
 	config
-—˜—pƒ‰ƒCƒuƒ‰ƒŠ
-	Moment	Version:9 keyFMHMchiX6c1bwSqGM1PZiW_PxhMjh3Sh48
-ƒXƒNƒŠƒvƒgƒvƒƒpƒeƒB
-	‚È‚µ
+åˆ©ç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+	Moment	Version:9 keyï¼šMHMchiX6c1bwSqGM1PZiW_PxhMjh3Sh48
+ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+	ãªã—
 */
 
 var thisBook_ = SpreadsheetApp.getActiveSpreadsheet();
-var appConfig_ = {}; // configƒV[ƒg‚Åİ’è‚·‚éİ’è’l‚Ì˜A‘z”z—ñ
+var appConfig_ = {}; // configã‚·ãƒ¼ãƒˆã§è¨­å®šã™ã‚‹è¨­å®šå€¤ã®é€£æƒ³é…åˆ—
 
-// POSTó‚¯æ‚è
+// POSTå—ã‘å–ã‚Š
 function doPost(e) {
-  // ó‚¯æ‚Á‚½POSTƒf[ƒ^‚ğlogƒV[ƒg‚É‹L˜^‚·‚é
+  // å—ã‘å–ã£ãŸPOSTãƒ‡ãƒ¼ã‚¿ã‚’logã‚·ãƒ¼ãƒˆã«è¨˜éŒ²ã™ã‚‹
   writeLog(e.postData.getDataAsString());
   var params = JSON.parse(e.postData.getDataAsString());
   
@@ -22,25 +22,25 @@ function doPost(e) {
 
 }
 
-// ƒƒCƒ“
+// ãƒ¡ã‚¤ãƒ³
 function main(p){
   try {
-    // configƒV[ƒg‚Ì“Ç‚İ‚İ
+    // configã‚·ãƒ¼ãƒˆã®èª­ã¿è¾¼ã¿
     readConfig();
-    // ˆ—
+    // å‡¦ç†
     doFoobar(p);
   } catch (error) {
     writeErrorLog(error);
   }
 }
 
-// ƒeƒXƒg—p
+// ãƒ†ã‚¹ãƒˆç”¨
 function test(){
   var params = JSON.parse(TEST_DATA_1);
   main(params);
 }
 
-// İ’è“Ç‚İ‚İ
+// è¨­å®šèª­ã¿è¾¼ã¿
 function readConfig() {
   var configSheet = thisBook_.getSheetByName('config');
   var lastRow = configSheet.getLastRow();
@@ -53,7 +53,7 @@ function readConfig() {
   }
 }
 
-// log‹L˜^—p
+// logè¨˜éŒ²ç”¨
 function writeParameterLog(e) { 
   var log = [];
   log.push(e);
@@ -61,14 +61,14 @@ function writeParameterLog(e) {
   
 }
 
-// ƒGƒ‰[ƒƒO‹L˜^—p
+// ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°è¨˜éŒ²ç”¨
 function writeErrorLog(e) {  
   var log = [];
   log.push(e);
   writeLog('error',log);
 }
 
-// “Á’èƒV[ƒg‚É“ú•t•t‚«‚Åî•ñ‚ğ‹L˜^
+// ç‰¹å®šã‚·ãƒ¼ãƒˆã«æ—¥ä»˜ä»˜ãã§æƒ…å ±ã‚’è¨˜éŒ²
 function writeLog(logSheetName, log) {
   var logSheet = THIS_BOOK.getSheetByName(logSheetName);
   var lastRow = logSheet.getLastRow();
@@ -78,26 +78,26 @@ function writeLog(logSheetName, log) {
   }
 }
 
-// Œ»İ‚Ì“ú•t‚ğ•¶š—ñ‚Åæ“¾
+// ç¾åœ¨ã®æ—¥ä»˜ã‚’æ–‡å­—åˆ—ã§å–å¾—
 function getDateTime() {
   var m = Moment.moment(); 
   return m.format("YYYY/MM/DD HH:mm:ss");
 }
-// ƒ[ƒ‹‘—M
-// backlog‚ÌŒ–¼ËMail‚ÌŒ–¼AÚ×‚Æ“o˜^ƒ†[ƒU[–¼Ë–{•¶
+// ãƒ¡ãƒ¼ãƒ«é€ä¿¡
+// backlogã®ä»¶åâ‡’Mailã®ä»¶åã€è©³ç´°ã¨ç™»éŒ²ãƒ¦ãƒ¼ã‚¶ãƒ¼åâ‡’æœ¬æ–‡
 function sendMail(mailTempalteName, p) {
-  // Mail‚Éƒf[ƒ^–„‚ß‚İ
+  // Mailã«ãƒ‡ãƒ¼ã‚¿åŸ‹ã‚è¾¼ã¿
   var html = HtmlService.createTemplateFromFile(mailTempalteName);
   html.data = p.content.description.replace('\n\n','\n').split('\n'); 
   html.createdUser = p.createdUser.name;
   var mailHtml = html.evaluate().getContent();
   
-  // ‘—MƒIƒvƒVƒ‡ƒ“‚Ìİ’è
+  // é€ä¿¡ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®è¨­å®š
   var option = {};
   option.to = appConfig_['Mail.To'];
-  option.subject = p.content.summary;	// Œ–¼
+  option.subject = p.content.summary;	// ä»¶å
   option.from = appConfig_['Mail.From'];
-  option.name = '‘—MŒ³.';
+  option.name = 'é€ä¿¡å…ƒ.';
   option.replyTo = appConfig_['Mail.ReplyTo'];
   option.htmlBody = mailHtml;
   GmailApp.sendEmail(option.to, option.subject, '', option);

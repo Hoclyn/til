@@ -1,5 +1,5 @@
-// Foobarˆ—‚ÌŽÀ‘•
+// Foobarå‡¦ç†ã®å®Ÿè£…
 
 function doFoobar(p) {
-  // ŽÀÛ‚Ìˆ—
+  // å®Ÿéš›ã®å‡¦ç†
 }
