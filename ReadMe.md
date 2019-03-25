@@ -14,3 +14,5 @@
 [Google JavaScript Style Guide 和訳](http://cou929.nu/data/google_javascript_style_guide/)
 
 [Google JavaScript スタイルガイド - 日本語訳](https://www38.atwiki.jp/aias-jsstyleguide2/)
+
+[Google Apps Script(公式)](https://developers.google.com/apps-script/)
