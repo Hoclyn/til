@@ -28,6 +28,7 @@ function main(p){
     // configシートの読み込み
     readConfig();
     // 処理
+    doFoobar(p);
   } catch (error) {
     writeErrorLog(error);
   }
@@ -53,21 +54,28 @@ function readConfig() {
 }
 
 // log記録用
-function writeLog(e) {
-  var logSheet = thisBook_.getSheetByName('log');
-  var lastRow = logSheet.getLastRow();
-
-  logSheet.getRange(lastRow+1, 1).setValue(getDateTime());
-  logSheet.getRange(lastRow+1, 2).setValue(e);
+function writeParameterLog(e) { 
+  var log = [];
+  log.push(e);
+  writeLog('log',log);
+  
 }
 
 // エラーログ記録用
-function writeErrorLog(e) {
-  var logSheet = thisBook_.getSheetByName('error');
-  var lastRow = logSheet.getLastRow();
+function writeErrorLog(e) {  
+  var log = [];
+  log.push(e);
+  writeLog('error',log);
+}
 
+// 特定シートに日付付きで情報を記録
+function writeLog(logSheetName, log) {
+  var logSheet = THIS_BOOK.getSheetByName(logSheetName);
+  var lastRow = logSheet.getLastRow();
   logSheet.getRange(lastRow+1, 1).setValue(getDateTime());
-  logSheet.getRange(lastRow+1, 2).setValue(e);
+  for (var i = 0; i < log.length; i++) {
+    logSheet.getRange(lastRow+1, (i+2)).setValue(log[i]);
+  }
 }
 
 // 現在の日付を文字列で取得
