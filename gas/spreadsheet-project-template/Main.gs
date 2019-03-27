@@ -14,12 +14,14 @@ var appConfig_ = {}; // configシートで設定する設定値の連想配列
 
 // POST受け取り
 function doPost(e) {
+  // ScriptLogコンソールへの出力
+  //console.log(e.postData.getDataAsString());
   // 受け取ったPOSTデータをlogシートに記録する
-  writeLog(e.postData.getDataAsString());
+  writeParameterLog(e.postData.getDataAsString());
   var params = JSON.parse(e.postData.getDataAsString());
   
   main(params);
-
+  
 }
 
 // メイン
@@ -70,7 +72,7 @@ function writeErrorLog(e) {
 
 // 特定シートに日付付きで情報を記録
 function writeLog(logSheetName, log) {
-  var logSheet = THIS_BOOK.getSheetByName(logSheetName);
+  var logSheet = thisBook_.getSheetByName(logSheetName);
   var lastRow = logSheet.getLastRow();
   logSheet.getRange(lastRow+1, 1).setValue(getDateTime());
   for (var i = 0; i < log.length; i++) {
