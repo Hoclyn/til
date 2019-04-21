@@ -14,9 +14,17 @@ function doLine(p) {
     return;
   }
   
+  // spreadsheetで翻訳
+  var logSheet = thisBook_.getSheetByName('text');
+  var lastRow = logSheet.getLastRow();
+  var translatedColumn = logSheet.getRange(lastRow, 3); // 翻訳結果カラム
+  var srcColumn = 'B' + lastRow; // 入力文字列カラム
+  translatedColumn.setFormula('=GOOGLETRANSLATE(' + srcColumn + ', "ja","en")'); // 翻訳結果カラムに翻訳関数をセット
+  var translatedResult = translatedColumn.getValue();
+  
   
   // メッセージを返信
-  var replyMessage =  'あなたは' + texts[0] + 'と言いました';
+  var replyMessage =  translatedResult;
   sendMessageToLine(replyToken, replyMessage);     
 
 }

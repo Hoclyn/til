@@ -3,6 +3,7 @@ SpreadSheetにあらかじめ以下のシートを作成しておく
 	log
 	error
 	config
+	text
 利用ライブラリ
 	Moment	Version:9 key：MHMchiX6c1bwSqGM1PZiW_PxhMjh3Sh48
 スクリプトプロパティ
@@ -38,7 +39,7 @@ function main(p){
 
 // テスト用
 function test(){
-  var params = JSON.parse(TEST_DATA_1);
+  var params = JSON.parse(TEST_DATA_2);
   main(params);
 }
 
