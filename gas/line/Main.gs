@@ -3,7 +3,6 @@ SpreadSheetにあらかじめ以下のシートを作成しておく
 	log
 	error
 	config
-	text
 利用ライブラリ
 	Moment	Version:9 key：MHMchiX6c1bwSqGM1PZiW_PxhMjh3Sh48
 スクリプトプロパティ
@@ -39,7 +38,7 @@ function main(p){
 
 // テスト用
 function test(){
-  var params = JSON.parse(TEST_DATA_2);
+  var params = JSON.parse(TEST_DATA_1);
   main(params);
 }
 
@@ -54,6 +53,24 @@ function readConfig() {
       appConfig_[key] = val;
     }
   }
+}
+
+// 設定書き換え
+function updateConfig(targetKey, newvalue) {
+  var configSheet = thisBook_.getSheetByName('config');
+  var lastRow = configSheet.getLastRow();
+  for (var i = 1; i <= lastRow; i++) {
+    var key = configSheet.getRange(i, 1).getValue();
+    var val = configSheet.getRange(i, 2).getValue();
+    if (key.trim() === targetKey) {
+      configSheet.getRange(i, 2).setValue(newvalue);
+      readConfig();
+      return;
+    }
+  }
+  configSheet.getRange(lastRow+1, 2).setValue(targetKey);
+  configSheet.getRange(lastRow+1, 3).setValue(newvalue);
+  readConfig()
 }
 
 // log記録用
