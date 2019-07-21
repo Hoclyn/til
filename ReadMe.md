@@ -17,15 +17,15 @@
 
 [Google Apps Script(公式))](https://developers.google.com/apps-script/)
 
-### References
-
-[Django Girls のチュートリアル](https://tutorial.djangogirls.org/ja/)
 
 ---
 ## Python
 
 * [django](https://github.com/Hoclyn/til/tree/master/python/django)
 
+### References
+
+[Django Girls のチュートリアル](https://tutorial.djangogirls.org/ja/)
 ---
 ## Image
 
